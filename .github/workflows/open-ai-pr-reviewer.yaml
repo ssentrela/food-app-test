@@ -1,0 +1,44 @@
+name: OpenAI PR Reviewer
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  wait-for-builds:
+    runs-on: ubuntu-latest
+    needs: [ build-android, build-backend ]  # 👈 Phải khớp với tên trong 2 file kia
+    steps:
+      - name: All builds completed
+        run: echo "Android and Backend builds completed. Proceeding with OpenAI review."
+
+  review:
+    runs-on: ubuntu-latest
+    needs: wait-for-builds  # Chạy sau khi `wait-for-builds` hoàn thành
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Send code to OpenAI for review
+        uses: actions/http-client@v1
+        with:
+          url: https://api.openai.com/v1/completions
+          method: POST
+          headers: |
+            Content-Type: application/json
+            Authorization: Bearer ${{ secrets.OPENAI_API_KEY }}
+          body: |
+            {
+              "model": "gpt-4",
+              "prompt": "Please review the following code for best practices and security concerns:\n\n${{ github.event.pull_request.body }}",
+              "max_tokens": 1000
+            }
+
+      - name: Post Review Comments
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          REVIEW_FEEDBACK="Your code review from OpenAI:\n${{ steps.review.outputs.response }}"
+          curl -X POST -H "Authorization: token $GITHUB_TOKEN" \
+            -d "{\"body\": \"$REVIEW_FEEDBACK\"}" \
+            https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments
