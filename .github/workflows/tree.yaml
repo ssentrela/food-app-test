@@ -20,7 +20,7 @@ jobs:
 
     - name: Generate folder tree
       run: |
-        tree -L 6 > tree.txt
+        tree -L 10 > tree.txt
 
     - name: Commit and push folder tree
       env:
