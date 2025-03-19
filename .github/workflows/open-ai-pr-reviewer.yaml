@@ -7,40 +7,38 @@ on:
 jobs:
   wait-for-builds:
     runs-on: ubuntu-latest
-    needs: [ build-android, build-backend ]  # Đảm bảo jobs Android và Backend đã hoàn thành
+    needs: [ build-android, build-backend ]  # Chờ các job này hoàn thành
     steps:
       - name: All builds completed
         run: echo "Android and Backend builds completed. Proceeding with OpenAI review."
 
   review:
     runs-on: ubuntu-latest
-    needs: wait-for-builds  # Chạy sau khi các build hoàn thành
+    needs: wait-for-builds  # Đảm bảo review chỉ chạy sau khi builds hoàn tất
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2  # Đổi sang v2
+        uses: actions/checkout@v2  # Phiên bản đúng
 
       # Gửi mã nguồn đến OpenAI API
       - name: Send code to OpenAI for review
-        uses: actions/http-client@v1
-        with:
-          url: https://api.openai.com/v1/completions
-          method: POST
-          headers: |
-            Content-Type: application/json
-            Authorization: Bearer ${{ secrets.OPENAI_API_KEY }}
-          body: |
-            {
-              "model": "gpt-4",
-              "prompt": "Please review the following code for best practices and security concerns:\n\n${{ github.event.pull_request.body }}",
-              "max_tokens": 1000
-            }
+        id: openai_review
+        run: |
+          RESPONSE=$(curl -X POST https://api.openai.com/v1/completions \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer ${{ secrets.OPENAI_API_KEY }}" \
+            -d '{
+                  "model": "gpt-4",
+                  "prompt": "Please review the following code for best practices and security concerns:\n\n${{ github.event.pull_request.body }}",
+                  "max_tokens": 1000
+                }')
+          echo "::set-output name=review_output::$(echo $RESPONSE | jq -r '.choices[0].text')"
 
-      # Đăng comment phản hồi vào PR (nếu cần)
+      # Đăng bình luận với phản hồi từ OpenAI
       - name: Post Review Comments
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          REVIEW_FEEDBACK="Your code review from OpenAI:\n${{ steps.review.outputs.response }}"
+          echo "Review Feedback: ${{ steps.openai_review.outputs.review_output }}"
           curl -X POST -H "Authorization: token $GITHUB_TOKEN" \
-            -d "{\"body\": \"$REVIEW_FEEDBACK\"}" \
+            -d "{\"body\": \"${{ steps.openai_review.outputs.review_output }}\"}" \
             https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments
