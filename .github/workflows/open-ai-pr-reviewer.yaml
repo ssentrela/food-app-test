@@ -21,7 +21,7 @@ jobs:
             -H "Content-Type: application/json" \
             -H "Authorization: Bearer ${{ secrets.OPENAI_API_KEY }}" \
             -d '{
-                  "model": "gpt-4",
+                  "model": "gpt-3.5-turbo",
                   "prompt": "Please review the following code for best practices and security concerns:\n\n${{ github.event.pull_request.body }}",
                   "max_tokens": 1000
                 }')
