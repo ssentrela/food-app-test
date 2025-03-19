@@ -8,28 +8,125 @@
 │   │       ├── androidTest
 │   │       │   └── java
 │   │       │       └── com
+│   │       │           └── example
+│   │       │               └── foodapp
+│   │       │                   └── ExampleInstrumentedTest.java
 │   │       ├── main
 │   │       │   ├── AndroidManifest.xml
 │   │       │   ├── java
 │   │       │   │   └── com
+│   │       │   │       └── example
+│   │       │   │           └── foodapp
+│   │       │   │               ├── activities
+│   │       │   │               │   ├── HomeActivity.java
+│   │       │   │               │   ├── MainActivity.java
+│   │       │   │               │   └── admin
+│   │       │   │               ├── adapters
+│   │       │   │               │   ├── ChatAdapter.java
+│   │       │   │               │   └── admin
+│   │       │   │               ├── consts
+│   │       │   │               │   └── Constants.java
+│   │       │   │               ├── database
+│   │       │   │               │   ├── DatabaseContract.java
+│   │       │   │               │   └── DatabaseHelper.java
+│   │       │   │               ├── firebase
+│   │       │   │               │   └── MessagingService.java
+│   │       │   │               ├── fragments
+│   │       │   │               │   ├── Setting.java
+│   │       │   │               │   └── admin
+│   │       │   │               ├── listeners
+│   │       │   │               │   └── UserListener.java
+│   │       │   │               ├── network
+│   │       │   │               │   └── ApiClient.java
+│   │       │   │               └── utils
+│   │       │   │                   └── Utils.java
 │   │       │   └── res
 │   │       │       ├── color
+│   │       │       │   └── text_input_color.xml
 │   │       │       ├── drawable
+│   │       │       │   ├── avatar_default.png
+│   │       │       │   ├── ic_home.xml
+│   │       │       │   ├── ic_launcher_background.xml
+│   │       │       │   ├── ic_launcher_foreground.xml
+│   │       │       │   ├── ic_mess.xml
+│   │       │       │   ├── ic_order.xml
+│   │       │       │   └── ic_user.xml
 │   │       │       ├── font
+│   │       │       │   ├── inter_black.ttf
+│   │       │       │   ├── inter_blackitalic.ttf
+│   │       │       │   ├── inter_bold.ttf
+│   │       │       │   ├── inter_bolditalic.ttf
+│   │       │       │   ├── inter_extrabold.ttf
+│   │       │       │   ├── inter_extrabolditalic.ttf
+│   │       │       │   ├── inter_extralight.ttf
+│   │       │       │   ├── inter_extralightitalic.ttf
+│   │       │       │   ├── inter_italic.ttf
+│   │       │       │   ├── inter_light.ttf
+│   │       │       │   ├── inter_lightitalic.ttf
+│   │       │       │   ├── inter_medium.ttf
+│   │       │       │   ├── inter_mediumitalic.ttf
+│   │       │       │   ├── inter_regular.ttf
+│   │       │       │   ├── inter_semibold.ttf
+│   │       │       │   ├── inter_semibolditalic.ttf
+│   │       │       │   ├── inter_thin.ttf
+│   │       │       │   ├── inter_thinitalic.ttf
+│   │       │       │   ├── interdisplay_black.ttf
+│   │       │       │   ├── interdisplay_blackitalic.ttf
+│   │       │       │   ├── interdisplay_bold.ttf
+│   │       │       │   ├── interdisplay_bolditalic.ttf
+│   │       │       │   ├── interdisplay_extrabold.ttf
+│   │       │       │   ├── interdisplay_extrabolditalic.ttf
+│   │       │       │   ├── interdisplay_extralight.ttf
+│   │       │       │   ├── interdisplay_extralightitalic.ttf
+│   │       │       │   ├── interdisplay_italic.ttf
+│   │       │       │   ├── interdisplay_light.ttf
+│   │       │       │   ├── interdisplay_lightitalic.ttf
+│   │       │       │   ├── interdisplay_medium.ttf
+│   │       │       │   ├── interdisplay_mediumitalic.ttf
+│   │       │       │   ├── interdisplay_regular.ttf
+│   │       │       │   ├── interdisplay_semibold.ttf
+│   │       │       │   ├── interdisplay_semibolditalic.ttf
+│   │       │       │   ├── interdisplay_thin.ttf
+│   │       │       │   └── interdisplay_thinitalic.ttf
 │   │       │       ├── layout
+│   │       │       │   └── activity_main.xml
 │   │       │       ├── menu
+│   │       │       │   └── bottom_nav_menu.xml
 │   │       │       ├── mipmap-anydpi-v26
+│   │       │       │   ├── ic_launcher.xml
+│   │       │       │   └── ic_launcher_round.xml
 │   │       │       ├── mipmap-hdpi
+│   │       │       │   ├── ic_launcher.webp
+│   │       │       │   └── ic_launcher_round.webp
 │   │       │       ├── mipmap-mdpi
+│   │       │       │   ├── ic_launcher.webp
+│   │       │       │   └── ic_launcher_round.webp
 │   │       │       ├── mipmap-xhdpi
+│   │       │       │   ├── ic_launcher.webp
+│   │       │       │   └── ic_launcher_round.webp
 │   │       │       ├── mipmap-xxhdpi
+│   │       │       │   ├── ic_launcher.webp
+│   │       │       │   └── ic_launcher_round.webp
 │   │       │       ├── mipmap-xxxhdpi
+│   │       │       │   ├── ic_launcher.webp
+│   │       │       │   └── ic_launcher_round.webp
 │   │       │       ├── values
+│   │       │       │   ├── colors.xml
+│   │       │       │   ├── strings.xml
+│   │       │       │   ├── styles.xml
+│   │       │       │   └── themes.xml
 │   │       │       ├── values-night
+│   │       │       │   ├── colors.xml
+│   │       │       │   └── themes.xml
 │   │       │       └── xml
+│   │       │           ├── backup_rules.xml
+│   │       │           └── data_extraction_rules.xml
 │   │       └── test
 │   │           └── java
 │   │               └── com
+│   │                   └── example
+│   │                       └── foodapp
+│   │                           └── ExampleUnitTest.java
 │   ├── build.gradle.kts
 │   ├── gradle
 │   │   ├── libs.versions.toml
@@ -54,12 +151,31 @@
 │       │   ├── java
 │       │   │   └── com
 │       │   │       └── foodapp
+│       │   │           ├── FoodAppApplication.java
+│       │   │           ├── config
+│       │   │           │   └── SecurityConfig.java
+│       │   │           ├── controllers
+│       │   │           │   └── UserController.java
+│       │   │           ├── domain
+│       │   │           │   └── User.java
+│       │   │           ├── dto
+│       │   │           │   └── user
+│       │   │           │       └── CreateUserDTO.java
+│       │   │           ├── exceptions
+│       │   │           │   └── InvalidParamException.java
+│       │   │           ├── repositories
+│       │   │           │   └── UserRepository.java
+│       │   │           ├── services
+│       │   │           │   └── UserService.java
+│       │   │           └── utils
+│       │   │               └── TokenTypeUtil.java
 │       │   └── resources
 │       │       └── application.properties
 │       └── test
 │           └── java
 │               └── com
 │                   └── foodapp
+│                       └── FoodAppApplicationTests.java
 └── tree.txt
 
-43 directories, 20 files
+70 directories, 109 files
