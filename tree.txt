@@ -1,0 +1,28 @@
+.
+├── README.md
+├── android
+│   ├── app
+│   │   ├── build.gradle.kts
+│   │   ├── proguard-rules.pro
+│   │   └── src
+│   ├── build.gradle.kts
+│   ├── gradle
+│   │   ├── libs.versions.toml
+│   │   └── wrapper
+│   ├── gradle.properties
+│   ├── gradlew
+│   ├── gradlew.bat
+│   └── settings.gradle.kts
+├── backend
+│   ├── build.gradle.kts
+│   ├── gradle
+│   │   └── wrapper
+│   ├── gradlew
+│   ├── gradlew.bat
+│   ├── settings.gradle.kts
+│   └── src
+│       ├── main
+│       └── test
+└── tree.txt
+
+12 directories, 14 files
