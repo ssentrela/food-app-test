@@ -5,10 +5,37 @@
 │   │   ├── build.gradle.kts
 │   │   ├── proguard-rules.pro
 │   │   └── src
+│   │       ├── androidTest
+│   │       │   └── java
+│   │       │       └── com
+│   │       ├── main
+│   │       │   ├── AndroidManifest.xml
+│   │       │   ├── java
+│   │       │   │   └── com
+│   │       │   └── res
+│   │       │       ├── color
+│   │       │       ├── drawable
+│   │       │       ├── font
+│   │       │       ├── layout
+│   │       │       ├── menu
+│   │       │       ├── mipmap-anydpi-v26
+│   │       │       ├── mipmap-hdpi
+│   │       │       ├── mipmap-mdpi
+│   │       │       ├── mipmap-xhdpi
+│   │       │       ├── mipmap-xxhdpi
+│   │       │       ├── mipmap-xxxhdpi
+│   │       │       ├── values
+│   │       │       ├── values-night
+│   │       │       └── xml
+│   │       └── test
+│   │           └── java
+│   │               └── com
 │   ├── build.gradle.kts
 │   ├── gradle
 │   │   ├── libs.versions.toml
 │   │   └── wrapper
+│   │       ├── gradle-wrapper.jar
+│   │       └── gradle-wrapper.properties
 │   ├── gradle.properties
 │   ├── gradlew
 │   ├── gradlew.bat
@@ -17,12 +44,22 @@
 │   ├── build.gradle.kts
 │   ├── gradle
 │   │   └── wrapper
+│   │       ├── gradle-wrapper.jar
+│   │       └── gradle-wrapper.properties
 │   ├── gradlew
 │   ├── gradlew.bat
 │   ├── settings.gradle.kts
 │   └── src
 │       ├── main
+│       │   ├── java
+│       │   │   └── com
+│       │   │       └── foodapp
+│       │   └── resources
+│       │       └── application.properties
 │       └── test
+│           └── java
+│               └── com
+│                   └── foodapp
 └── tree.txt
 
-12 directories, 14 files
+43 directories, 20 files
