@@ -2,7 +2,7 @@ name: OpenAI PR Reviewer
 
 on:
   workflow_run:
-    workflows: ["Android CI", "Backend CI"]  # Tham chiếu đến tên workflow Android và Backend
+    workflows: ["Android CI", "Backend CI"]
     types:
       - completed
 
@@ -25,7 +25,9 @@ jobs:
                   "prompt": "Please review the following code for best practices and security concerns:\n\n${{ github.event.pull_request.body }}",
                   "max_tokens": 1000
                 }')
-          # New method to set output using environment files
+          
+          # Ghi toàn bộ phản hồi để kiểm tra
+          echo "OpenAI Response: $RESPONSE"  # Ghi toàn bộ phản hồi từ OpenAI
           echo "review_output=$(echo $RESPONSE | jq -r '.choices[0].text')" >> $GITHUB_ENV
 
       # Đăng bình luận với phản hồi từ OpenAI
